@@ -32,17 +32,7 @@ architecture behaviour of DiceSystem is
             dice2 : out STD_LOGIC_VECTOR(2 DOWNTO 0)
         );
     end component;
-	 
-    component dice_roller2 is
-        Port (
-            clk : in STD_LOGIC;
-            reset : in STD_LOGIC;
-            roll : in STD_LOGIC;
-				select_faces: in Std_LOGIC_VECTOR(2 downto 0);
-            dice1 : out STD_LOGIC_VECTOR(2 DOWNTO 0);
-            dice2 : out STD_LOGIC_VECTOR(2 DOWNTO 0)
-        );
-    end component;
+	
 
     component SegDecoder is
         port (
@@ -76,18 +66,8 @@ begin
             roll => roll_trigger1,
 				select_faces => selected_faces,
             dice1 => iFinal_dice1,
-            dice2 => iFinal_dice3
+            dice2 => iFinal_dice2
         );
-	obj2: dice_roller2
-        Port map (
-            clk => half_second,  -- Use the half-second clock
-            reset => SW(0),
-            roll => roll_trigger2,
-				select_faces => selected_faces,
-            dice1 => iFinal_dice2,
-            dice2 => iFinal_dice4
-        );
-
 
     -- Instantiate the SegDecoders
     seg1: SegDecoder
